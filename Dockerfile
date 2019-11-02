@@ -1,9 +1,13 @@
-FROM node:latest as node
-WORKDIR /app
-COPY . .
-RUN npm install
-RUN npm build --prod
+FROM alpine:3.1
 
+# Update
+RUN apk add --update python py-pip
 
-FROM ngnix:alpine
-COPY --from=node /app/dist/hello_flash /usr/share/ngnix/html
+# Install app dependencies
+RUN pip install Flask
+
+# Bundle app source
+COPY vm.py /home/akshaykr/hello_flask
+
+EXPOSE  9000
+CMD ["python", "/home/akshaykr/hello_flask", "-p 9000"]
