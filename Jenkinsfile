@@ -2,6 +2,7 @@ pipeline {
     environment {
 	registry= "iakshakr/webapp"
 	registryCredential= 'dockerhub'
+        dockerImage= ''
     }
 
     agent { dockerfile true }
@@ -10,7 +11,7 @@ pipeline {
         stage('Bilding image') {
             steps {
 	     script {
-                docker.build registry + ":$BUILD_NUMBER"
+                dockerImage= docker.build registry + ":$BUILD_NUMBER"
               }
             }
         }
