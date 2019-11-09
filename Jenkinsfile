@@ -1,10 +1,17 @@
 pipeline {
+    environment {
+	registry= "iakshakr/webapp"
+	registryCredential= 'dockerhub'
+    }
+
     agent { dockerfile true }
+
     stages {
-        stage('Test') {
+        stage('Bilding image') {
             steps {
-                sh 'node --version'
-                sh 'svn --version'
+	     script {
+                docker.build registry + ":$BUILD_NUMBER"
+              }
             }
         }
     }
