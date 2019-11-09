@@ -2,7 +2,6 @@ pipeline {
     environment {
 	registry= "iakshakr/webapp"
 	registryCredential= 'dockerhub'
-        dockerImage= ''
     }
 
     agent { dockerfile true }
