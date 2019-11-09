@@ -14,5 +14,12 @@ pipeline {
               }
             }
         }
+	stage('Deploy image') {
+	   stesp {
+            script {
+                dockerImage=docker.build registry + ":$BUILD_NUMBER"
+               }
+            }
+        }
     }
 }
