@@ -1,6 +1,6 @@
 pipeline {
     environment {
-	registry= "iakshakr/webapp"
+	registry= "iakshaykr/webapp"
 	registryCredential= 'dockerhub'
     }
 
