@@ -19,7 +19,7 @@ node {
 		*/
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             app.push("${env.BUILD_NUMBER}")
-            app.push("webapppy")
+            app.push("azureapp")
             } 
                 echo "Trying to Push Docker Build to DockerHub"
     }
